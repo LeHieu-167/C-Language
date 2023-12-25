@@ -91,16 +91,14 @@ int count(Node* p){
 
 Node* removeInfo(Node* r, char* malop){
 	if(r==NULL) return NULL;
-	if(strcpy(r->malop,malop)==0){
+	if(strcmp(r->malop,malop)==0){
 		Node* tmp = r->next;
 		free(r);
-		if(tmp == NULL) tmp = NULL;
 		return tmp;
 	}else{
 		r->next = removeInfo(r->next,malop);
 		return r;
 	}
-	printList();
 }
 
 void processInsertL(){
@@ -143,6 +141,7 @@ void freeNode(Node* r) {
 int main(){
 	while(1){
 		int d;
+		printf("0.Load:\n");
 		printf("1.Hien thi:\n");
 		printf("2.Tim kiem:\n");
 		printf("3.Them vao dau danh sach:\n");
@@ -154,7 +153,8 @@ int main(){
 		printf("Chon chuc nang:");
 		scanf("%d",&d);
 		switch(d){
-			case 1: processLoad; printList(); break;
+			case 0: processLoad(); break;
+			case 1: printList(); break;
 			case 2: processFind(); break;
 			case 3: processInsertF(); break;
 			case 4: processInsertL(); break;

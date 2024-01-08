@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Định nghĩa cấu trúc của một phần tử trong danh sách liên kết
+// Ð?nh nghia c?u trúc c?a m?t ph?n t? trong danh sách liên k?t
 struct Node {
     int key;
     struct Node *next;
 };
 
-// Hàm để tạo một phần tử mới với khóa k
+// Hàm d? t?o m?t ph?n t? m?i v?i khóa k
 struct Node* createNode(int k) {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
     newNode->key = k;
@@ -16,7 +16,7 @@ struct Node* createNode(int k) {
     return newNode;
 }
 
-// Hàm để in danh sách liên kết
+// Hàm d? in danh sách liên k?t
 void printList(struct Node *head) {
     struct Node *current = head;
     while (current != NULL) {
@@ -30,14 +30,14 @@ int exists(struct Node *head, int k) {
     struct Node *current = head;
     while (current != NULL) {
         if (current->key == k) {
-            return 1; // Phần tử tồn tại
+            return 1; // Ph?n t? t?n t?i
         }
         current = current->next;
     }
-    return 0; // Phần tử không tồn tại
+    return 0; // Ph?n t? không t?n t?i
 }
 
-// Hàm để thêm một phần tử vào đầu danh sách
+// Hàm d? thêm m?t ph?n t? vào d?u danh sách
 void addFirst(struct Node **head, int k) {
     if (!exists(*head, k)){
     struct Node *newNode = createNode(k);
@@ -46,9 +46,9 @@ void addFirst(struct Node **head, int k) {
     }
 }
 
-// Hàm để thêm một phần tử vào cuối danh sách
+// Hàm d? thêm m?t ph?n t? vào cu?i danh sách
 void addLast(struct Node **head, int k) {
-    if(!exists(*head, k){
+    if(!exists(*head, k)){
     struct Node *newNode = createNode(k);
     if (*head == NULL) {
         *head = newNode;
@@ -62,7 +62,7 @@ void addLast(struct Node **head, int k) {
     }
 }
 
-// Hàm để thêm một phần tử vào sau một phần tử khác trong danh sách
+// Hàm d? thêm m?t ph?n t? vào sau m?t ph?n t? khác trong danh sách
 void addAfter(struct Node *head, int k, int after) {
     if (!exists(head, k) && exists(head, after)){
     struct Node *current = head;
@@ -77,9 +77,9 @@ void addAfter(struct Node *head, int k, int after) {
     }
 }
 
-// Hàm để thêm một phần tử vào trước một phần tử khác trong danh sách
+// Hàm d? thêm m?t ph?n t? vào tru?c m?t ph?n t? khác trong danh sách
 void addBefore(struct Node **head, int k, int before) {
-    if (!exists(head, k) && exists(head, after)){
+    if (!exists(*head, k) && exists(*head, before)){
     if (*head == NULL) {
         return;
     }
@@ -99,7 +99,7 @@ void addBefore(struct Node **head, int k, int before) {
     }
 }
 
-// Hàm để loại bỏ một phần tử khỏi danh sách
+// Hàm d? lo?i b? m?t ph?n t? kh?i danh sách
 void removeNode(struct Node **head, int k) {
     if (*head == NULL) {
         return;
@@ -121,7 +121,7 @@ void removeNode(struct Node **head, int k) {
     }
 }
 
-// Hàm để đảo ngược danh sách liên kết
+// Hàm d? d?o ngu?c danh sách liên k?t
 void reverseList(struct Node **head) {
     struct Node *prev = NULL;
     struct Node *current = *head;

@@ -26,15 +26,29 @@ void printList(struct Node *head) {
     printf("\n");
 }
 
+int exists(struct Node *head, int k) {
+    struct Node *current = head;
+    while (current != NULL) {
+        if (current->key == k) {
+            return 1; // Phần tử tồn tại
+        }
+        current = current->next;
+    }
+    return 0; // Phần tử không tồn tại
+}
+
 // Hàm để thêm một phần tử vào đầu danh sách
 void addFirst(struct Node **head, int k) {
+    if (!exists(*head, k)){
     struct Node *newNode = createNode(k);
     newNode->next = *head;
     *head = newNode;
+    }
 }
 
 // Hàm để thêm một phần tử vào cuối danh sách
 void addLast(struct Node **head, int k) {
+    if(!exists(*head, k){
     struct Node *newNode = createNode(k);
     if (*head == NULL) {
         *head = newNode;
@@ -45,10 +59,12 @@ void addLast(struct Node **head, int k) {
         }
         current->next = newNode;
     }
+    }
 }
 
 // Hàm để thêm một phần tử vào sau một phần tử khác trong danh sách
 void addAfter(struct Node *head, int k, int after) {
+    if (!exists(head, k) && exists(head, after)){
     struct Node *current = head;
     while (current != NULL && current->key != after) {
         current = current->next;
@@ -58,10 +74,12 @@ void addAfter(struct Node *head, int k, int after) {
         newNode->next = current->next;
         current->next = newNode;
     }
+    }
 }
 
 // Hàm để thêm một phần tử vào trước một phần tử khác trong danh sách
 void addBefore(struct Node **head, int k, int before) {
+    if (!exists(head, k) && exists(head, after)){
     if (*head == NULL) {
         return;
     }
@@ -77,6 +95,7 @@ void addBefore(struct Node **head, int k, int before) {
         struct Node *newNode = createNode(k);
         newNode->next = current->next;
         current->next = newNode;
+    }
     }
 }
 
